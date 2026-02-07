@@ -1,13 +1,13 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { BigFinCriticTestScreen } from '../bigFinViews/BigFinCriticTestScreen';
-import { BigFinTapGame } from '../bigFinViews/BigFinTapGame';
+import { BigFinCriticTestScreen } from '../screens/BigFinCriticTestScreen';
+import { BigFinTapGame } from '../screens/BigFinTapGame';
 
-import BigFinLoaderScreen from '../bigFinViews/BigFinLoaderScreen';
-import BigFinHomeScreen from '../bigFinViews/BigFinHomeScreen';
-import BigFinPartyZoneScreen from '../bigFinViews/BigFinPartyZoneScreen';
-import BigFinCriticLevelsScreen from '../bigFinViews/BigFinCriticLevelsScreen';
-import BigFinStoriesScreen from '../bigFinViews/BigFinStoriesScreen';
-import IntroduceScreen from '../bigFinViews/IntroduceScreen';
+import BigFinLoaderScreen from '../screens/BigFinLoaderScreen';
+import BigFinHomeScreen from '../screens/BigFinHomeScreen';
+import BigFinPartyZoneScreen from '../screens/BigFinPartyZoneScreen';
+import BigFinCriticLevelsScreen from '../screens/BigFinCriticLevelsScreen';
+import BigFinStoriesScreen from '../screens/BigFinStoriesScreen';
+import IntroduceScreen from '../screens/IntroduceScreen';
 
 const Stack = createStackNavigator();
 
