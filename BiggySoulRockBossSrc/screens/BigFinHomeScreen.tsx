@@ -232,7 +232,7 @@ const BigFinHomeScreen = () => {
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() =>
-                navigationBiggySoul.navigate('BigFinCriticLevelsScreen')
+                navigationBiggySoul.navigate('BigFinPartyZoneScreen')
               }
             >
               <LinearGradient

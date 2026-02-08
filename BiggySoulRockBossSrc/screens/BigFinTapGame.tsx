@@ -701,7 +701,7 @@ const bigFinStyles = StyleSheet.create({
   bigFinLoadingText: { color: '#fff', fontSize: 20, fontWeight: '600' },
 
   bigFinHeaderOuter: {
-    marginTop: 12,
+    marginTop: 60,
     width: '90%',
     alignSelf: 'center',
     borderRadius: 16,

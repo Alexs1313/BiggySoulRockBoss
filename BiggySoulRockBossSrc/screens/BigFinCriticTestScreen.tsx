@@ -433,11 +433,11 @@ const biggySoulRoot = { flex: 1 };
 const biggySoulSafeArea = { flex: 1 };
 
 const biggySoulHeaderOuter = {
-  marginTop: 12,
   width: '90%',
   alignSelf: 'center' as const,
   borderRadius: 16,
   marginBottom: 20,
+  marginTop: 60,
 };
 
 const biggySoulHeaderBorder = {

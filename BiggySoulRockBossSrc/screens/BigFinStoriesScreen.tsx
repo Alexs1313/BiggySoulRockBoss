@@ -238,7 +238,7 @@ export default function BigFinStoriesScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           flexGrow: 1,
-          paddingTop: Platform.OS === 'android' ? biggySoulH * 0.07 : 0,
+          paddingTop: Platform.OS === 'android' ? biggySoulH * 0.06 : 0,
           paddingBottom: 20,
         }}
       >
@@ -255,7 +255,7 @@ export default function BigFinStoriesScreen() {
 const biggySoulStyles = {
   mainBox: { flex: 1 },
 
-  safe: { flex: 1, padding: 16 },
+  safe: { flex: 1 },
 
   headerStars: {
     position: 'absolute' as const,
@@ -265,7 +265,6 @@ const biggySoulStyles = {
   },
 
   headerOuter: {
-    marginTop: 12,
     width: '90%' as const,
     alignSelf: 'center' as const,
     borderRadius: 16,
