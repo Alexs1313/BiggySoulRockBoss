@@ -584,20 +584,6 @@ export function BigFinTapGame() {
                       Main Menu
                     </Text>
                   </TouchableOpacity>
-
-                  <TouchableOpacity
-                    style={bigFinStyles.bigFinSoundBtn}
-                    activeOpacity={0.7}
-                    onPress={() => bigFinSetSound(!bigFinSoundEnabled)}
-                  >
-                    <Image
-                      source={
-                        bigFinSoundEnabled
-                          ? require('../assets/finImages/musBtn.png')
-                          : require('../assets/finImages/musicOff.png')
-                      }
-                    />
-                  </TouchableOpacity>
                 </View>
               </LinearGradient>
             </View>
@@ -701,7 +687,7 @@ const bigFinStyles = StyleSheet.create({
   bigFinLoadingText: { color: '#fff', fontSize: 20, fontWeight: '600' },
 
   bigFinHeaderOuter: {
-    marginTop: 12,
+    marginTop: 60,
     width: '90%',
     alignSelf: 'center',
     borderRadius: 16,
@@ -847,6 +833,7 @@ const bigFinStyles = StyleSheet.create({
     borderRadius: 16,
     borderWidth: 1.5,
     borderColor: '#F9CDF9',
+    padding: 20,
   },
 
   bigFinPauseAction: {

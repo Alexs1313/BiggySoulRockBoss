@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   Image,
   ImageBackground,
@@ -11,19 +11,12 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import Sound from 'react-native-sound';
-import { useFinStore } from '../storage/bigFinCntxt';
+
 import LinearGradient from 'react-native-linear-gradient';
 
 const biggySoulSafeNumber = (n: number) => (Number.isFinite(n) ? n : 0);
 
-const biggySoulTrackList = [
-  '679359__vannipat__melody-loop-mix-128-bpm.mp3',
-  '679359__vannipat__melody-loop-mix-128-bpm.mp3',
-];
-
 const biggySoulAsyncStorageKeys = {
-  soundKey: 'toggleSound',
   totalScoreKey: 'flamingo_total_score',
 };
 
@@ -33,35 +26,13 @@ const BigFinHomeScreen = () => {
   const { height: heightBiggySoul } = useWindowDimensions();
   const isSmallDeviceBiggySoul = heightBiggySoul < 700;
 
-  const [biggySoulTrackIndex, setBiggySoulTrackIndex] = useState<number>(0);
-  const [biggySoulSound, setBiggySoulSound] = useState<Sound | null>(null);
-
-  const {
-    finSoundEnabled: biggySoulSoundEnabled,
-    setFinSoundEnabled: setBiggySoulSoundEnabled,
-  } = useFinStore();
-
   const [biggySoulTotalScore, setBiggySoulTotalScore] = useState<number>(0);
 
   useFocusEffect(
     useCallback(() => {
-      biggySoulLoadSoundToggle();
       biggySoulLoadTotalScore();
     }, []),
   );
-
-  useEffect(() => {
-    biggySoulPlayMusic(biggySoulTrackIndex);
-
-    return () => {
-      if (biggySoulSound) {
-        biggySoulSound.stop(() => {
-          biggySoulSound.release();
-        });
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [biggySoulTrackIndex]);
 
   const biggySoulLoadTotalScore = useCallback(async () => {
     try {
@@ -75,87 +46,6 @@ const BigFinHomeScreen = () => {
       setBiggySoulTotalScore(0);
     }
   }, []);
-
-  const biggySoulPlayMusic = (trackIndexBiggySoul: number) => {
-    if (biggySoulSound) {
-      biggySoulSound.stop(() => {
-        biggySoulSound.release();
-      });
-    }
-
-    const trackNameBiggySoul = biggySoulTrackList[trackIndexBiggySoul];
-
-    const nextSoundBiggySoul = new Sound(
-      trackNameBiggySoul,
-      Sound.MAIN_BUNDLE,
-      errorBiggySoul => {
-        if (errorBiggySoul) {
-          console.log('Error', errorBiggySoul);
-          return;
-        }
-
-        nextSoundBiggySoul.play(successBiggySoul => {
-          if (successBiggySoul) {
-            setBiggySoulTrackIndex(
-              prevBiggySoul => (prevBiggySoul + 1) % biggySoulTrackList.length,
-            );
-          } else {
-            console.log('Error');
-          }
-        });
-
-        setBiggySoulSound(nextSoundBiggySoul);
-      },
-    );
-  };
-
-  useEffect(() => {
-    const biggySoulSyncToggleFromStorage = async () => {
-      try {
-        const rawBiggySoul = await AsyncStorage.getItem(
-          biggySoulAsyncStorageKeys.soundKey,
-        );
-        const enabledBiggySoul = rawBiggySoul
-          ? JSON.parse(rawBiggySoul)
-          : false;
-
-        setBiggySoulSoundEnabled(enabledBiggySoul);
-        if (biggySoulSound) biggySoulSound.setVolume(enabledBiggySoul ? 1 : 0);
-      } catch (errorBiggySoul) {
-        console.error('mus error', errorBiggySoul);
-      }
-    };
-
-    biggySoulSyncToggleFromStorage();
-  }, [biggySoulSound, setBiggySoulSoundEnabled]);
-
-  useEffect(() => {
-    if (biggySoulSound) biggySoulSound.setVolume(biggySoulSoundEnabled ? 1 : 0);
-  }, [biggySoulSoundEnabled, biggySoulSound]);
-
-  const biggySoulLoadSoundToggle = async () => {
-    try {
-      const rawBiggySoul = await AsyncStorage.getItem(
-        biggySoulAsyncStorageKeys.soundKey,
-      );
-      const enabledBiggySoul = rawBiggySoul ? JSON.parse(rawBiggySoul) : false;
-      setBiggySoulSoundEnabled(enabledBiggySoul);
-    } catch (errorBiggySoul) {
-      console.error('mus error', errorBiggySoul);
-    }
-  };
-
-  const biggySoulToggleSound = async (nextEnabledBiggySoul: boolean) => {
-    try {
-      await AsyncStorage.setItem(
-        biggySoulAsyncStorageKeys.soundKey,
-        JSON.stringify(nextEnabledBiggySoul),
-      );
-      setBiggySoulSoundEnabled(nextEnabledBiggySoul);
-    } catch (errorBiggySoul) {
-      console.log('sound failed', errorBiggySoul);
-    }
-  };
 
   return (
     <ImageBackground
@@ -232,7 +122,7 @@ const BigFinHomeScreen = () => {
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() =>
-                navigationBiggySoul.navigate('BigFinCriticLevelsScreen')
+                navigationBiggySoul.navigate('BigFinPartyZoneScreen')
               }
             >
               <LinearGradient
@@ -352,20 +242,6 @@ const BigFinHomeScreen = () => {
                 </LinearGradient>
               </LinearGradient>
             </TouchableOpacity>
-
-            <TouchableOpacity
-              style={biggySoulSoundButton}
-              activeOpacity={0.7}
-              onPress={() => biggySoulToggleSound(!biggySoulSoundEnabled)}
-            >
-              <Image
-                source={
-                  biggySoulSoundEnabled
-                    ? require('../assets/finImages/musBtn.png')
-                    : require('../assets/finImages/musicOff.png')
-                }
-              />
-            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -439,12 +315,6 @@ const biggySoulHeaderStars = {
   width: '100%',
   height: 60,
   zIndex: -1,
-};
-
-const biggySoulSoundButton = {
-  zIndex: 1,
-  marginTop: 20,
-  alignSelf: 'center' as const,
 };
 
 export default BigFinHomeScreen;

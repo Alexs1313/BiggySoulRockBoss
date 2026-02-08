@@ -322,7 +322,7 @@ export default function BigFinPartyZoneScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           flexGrow: 1,
-          paddingTop: Platform.OS === 'android' ? biggySoulHeight * 0.07 : 0,
+          paddingTop: Platform.OS === 'android' ? biggySoulHeight * 0.06 : 0,
           height: '600' as any,
         }}
       >
@@ -459,6 +459,7 @@ export default function BigFinPartyZoneScreen() {
             visible={biggySoulModalVisible}
             animationType="fade"
             onRequestClose={biggySoulCloseModal}
+            statusBarTranslucent={Platform.OS === 'android'}
           >
             <View style={biggySoulModalOverlay}>
               <View

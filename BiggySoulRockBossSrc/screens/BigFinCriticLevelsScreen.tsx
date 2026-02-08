@@ -77,13 +77,12 @@ export default function BigFinCriticLevelsScreen() {
       source={require('../assets/finImages/levelsBg.png')}
       style={biggySoulRoot}
       resizeMode="cover"
-      bgBlurRadius={10}
     >
       <ScrollView
         contentContainerStyle={[
           biggySoulScrollContent,
           {
-            paddingTop: Platform.OS === 'android' ? heightBiggySoul * 0.07 : 0,
+            paddingTop: Platform.OS === 'android' ? heightBiggySoul * 0.06 : 0,
           },
         ]}
       >
@@ -217,7 +216,6 @@ const biggySoulScrollContent = { flexGrow: 1 };
 const biggySoulSafeArea = { flex: 1 };
 
 const biggySoulHeaderOuter = {
-  marginTop: 12,
   width: '90%',
   alignSelf: 'center' as const,
   borderRadius: 16,
