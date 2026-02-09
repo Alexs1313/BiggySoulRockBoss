@@ -9,32 +9,35 @@ import BigFinCriticLevelsScreen from '../screens/BigFinCriticLevelsScreen';
 import BigFinStoriesScreen from '../screens/BigFinStoriesScreen';
 import IntroduceScreen from '../screens/IntroduceScreen';
 
-const Stack = createStackNavigator();
+const FinStack = createStackNavigator();
 
 const StackNav = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="BigFinLoaderScreen" component={BigFinLoaderScreen} />
-      <Stack.Screen name="IntroduceScreen" component={IntroduceScreen} />
-      <Stack.Screen name="BigFinHomeScreen" component={BigFinHomeScreen} />
-      <Stack.Screen
+    <FinStack.Navigator screenOptions={{ headerShown: false }}>
+      <FinStack.Screen
+        name="BigFinLoaderScreen"
+        component={BigFinLoaderScreen}
+      />
+      <FinStack.Screen name="IntroduceScreen" component={IntroduceScree} />
+      <FinStack.Screen name="BigFinHomeScreen" component={BigFinHomeScreen} />
+      <FinStack.Screen
         name="BigFinCriticLevelsScreen"
         component={BigFinCriticLevelsScreen}
       />
-      <Stack.Screen
+      <FinStack.Screen
         name="BigFinCriticTestScreen"
         component={BigFinCriticTestScreen}
       />
-      <Stack.Screen name="BigFinTapGame" component={BigFinTapGame} />
-      <Stack.Screen
+      <FinStack.Screen name="BigFinTapGame" component={BigFinTapGame} />
+      <FinStack.Screen
         name="BigFinStoriesScreen"
         component={BigFinStoriesScreen}
       />
-      <Stack.Screen
+      <FinStack.Screen
         name="BigFinPartyZoneScreen"
         component={BigFinPartyZoneScreen}
       />
-    </Stack.Navigator>
+    </FinStack.Navigator>
   );
 };
 
