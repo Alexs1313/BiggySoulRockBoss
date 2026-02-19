@@ -18,7 +18,7 @@ const StackNav = () => {
         name="BigFinLoaderScreen"
         component={BigFinLoaderScreen}
       />
-      <FinStack.Screen name="IntroduceScreen" component={IntroduceScree} />
+      <FinStack.Screen name="IntroduceScreen" component={IntroduceScreen} />
       <FinStack.Screen name="BigFinHomeScreen" component={BigFinHomeScreen} />
       <FinStack.Screen
         name="BigFinCriticLevelsScreen"
